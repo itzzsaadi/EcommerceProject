@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model SimpleEcommerce.Models.Product
+
+@{
+    ViewBag.Title = "Product Details";
+}
+
+<div class="container mt-5">
+    <div class="row">
+
+        <!-- Product Info Section -->
+        <div class="col-md-7">
+            <div class="card shadow-sm p-4">
+                <h2 class="card-title">@Model.Name</h2>
+                <hr>
+                <!-- Features Section -->
+                <div class="my-4">
+                    <ul class="list-unstyled">
+                        <li class="d-flex align-items-center mb-3">
+                            <img src="~/images/shield-icon.png" alt="Warranty" class="me-2" style="width: 40px; height: auto;">
+                            <span>7 Days Check Warranty</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                            <img src="~/images/badge-icon.png" alt="Best Price" class="me-2" style="width: 40px; height: auto;">
+                            <span>Best Price Guarantee</span>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <img src="~/images/delivery-icon.png" alt="Free Delivery" class="me-2" style="width: 40px; height: auto;">
+                            <span>Free Cash on Delivery</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="h4 text-success mt-3">Price: $@Model.Price</p>
+
+                <!-- Add to Cart Button -->
+                <div class="d-flex align-items-center mt-3">
+                    <form action="@Url.Action("Add", "Cart")" method="post">
+                        <input type="hidden" name="productId" value="@Model.Id" />
+                        <button type="submit" class="btn btn-lg btn-success me-3">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </form>
+
+                    <a href="@Url.Action("Shop", "Product")" class="btn btn-outline-secondary btn-lg">
+                        <i class="fas fa-store"></i> Back to Shop
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Product Image Section -->
+        <div class="col-md-5">
+            <div class="card shadow-sm">
+                <img src="~/images/@Model.ImageUrl" class="card-img-top p-3 rounded" alt="@Model.Name">
+            </div>
+        </div>
+    </div>
+    <hr />
+    <p class="text-muted"><strong>Description:</strong></p>
+    <div id="productDescription"></div> <!-- Description-->
+    <!-- Customer Reviews Section -->
+    <div class="mt-5">
+        <h3 class="text-dark">Customer Reviews</h3>
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> No reviews yet. Be the first to review this product!
+        </div>
+    </div>
+</div>
+
+<!-- Include JavaScript File -->
+<script src="~/Content/js/script.js"></script>
+<script>
+    // Pass Description Data to JavaScript
+    let productDescription = `@Html.Raw(Model.Description.Replace("\n", "\\n"))`;
+    displayProductDescription(productDescription);
+</script>

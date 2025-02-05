@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model SimpleEcommerce.Models.Order
+
+@{
+    ViewBag.Title = "Order Confirmation";
+}
+<h2>Order Confirmation</h2>
+
+<p>Thank you for your order! Your order has been successfully placed.</p>
+
+<table class="table">
+    <tr>
+        <th>Order ID:</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>Total Amount:</th>
+        <td>$@Model.TotalAmount</td>
+    </tr>
+    <tr>
+        <th>Order Date:</th>
+        <td>@Model.OrderDate.ToString("MMMM dd, yyyy HH:mm")</td>
+    </tr>
+</table>
+
+<a href="@Url.Action("Shop", "Product")" class="btn btn-primary">Continue Shopping</a>

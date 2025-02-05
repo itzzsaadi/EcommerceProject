@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<SimpleEcommerce.Models.Product>
+
+@{
+    ViewBag.Title = "Shop";
+}
+<h2>Shop</h2>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-3">
+            <div class="card">
+                <img src="~/images/@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                <div class="card-body text-center">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">$@product.Price</p>
+                    <a href="@Url.Action("Details", "Product", new { id = product.Id })" class="btn btn-success">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Order Details";
+}
+
+<h2>Order Details</h2>
+
+<div class="mb-4">
+    <h4>Order Information</h4>
+    <p><strong>Order ID:</strong> @ViewBag.Order.Id</p>
+    <p><strong>Total Amount:</strong> $@ViewBag.Order.TotalAmount</p>
+    <p><strong>Order Date:</strong> @ViewBag.Order.OrderDate</p>
+</div>
+
+<h4>Customer & Product Details</h4>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Customer Name</th>
+            <th>Phone Number</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Zip Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var detail in Model)
+        {
+            <tr>
+                <td>@detail.ProductId</td>
+                <td>@detail.ProductName</td>
+                <td>@detail.Quantity</td>
+                <td>$@detail.Price</td>
+                <td>@detail.CustomerName</td>
+                <td>@detail.PhoneNumber</td>
+                <td>@detail.City</td>
+                <td>@detail.Address</td>
+                <td>@detail.ZipCode</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("ManageOrders", "Admin")" class="btn btn-secondary">Back to Orders</a>

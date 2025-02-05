@@ -1,0 +1,54 @@
+﻿<footer class="bg-dark text-light py-4 mt-5">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <!-- Newsletter Subscription -->
+            <div class="col-md-6">
+                <h5>Join Our Newsletter</h5>
+                <form action="@Url.Action("Subscribe", "Home")" method="post" class="d-flex justify-content-center">
+                    <div class="input-group">
+                        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                </form>
+                <p class="mt-2">Stay updated with our latest offers and news!</p>
+            </div>
+        </div>
+        <hr class="border-light">
+
+        <div class="row">
+            <!-- Quick Links -->
+            <div class="col-md-4">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="@Url.Action("Index", "Home")" class="text-light text-decoration-none">Home</a></li>
+                    <li><a href="@Url.Action("Shop", "Product")" class="text-light text-decoration-none">Shop</a></li>
+                    <li><a href="@Url.Action("Contact", "Home")" class="text-light text-decoration-none">Contact Us</a></li>
+                    <li><a href="@Url.Action("PrivacyPolicy", "Home")" class="text-light text-decoration-none">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="col-md-4">
+                <h5>Contact Us</h5>
+                <p>Email: <a href="mailto:support@ecommerce.com" class="text-decoration-none text-light">support@ecommerce.com</a></p>
+                <p>Phone: <a href="tel:+1234567890" class="text-decoration-none text-light">+1 234 567 890</a></p>
+                <p>Address: 123 E-Commerce Street, NY, USA</p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="col-md-4">
+                <h5>Follow Us</h5>
+                <div>
+                    <a href="#" class="text-light me-2 text-decoration-none"><i class="bi bi-facebook"></i> Facebook</a><br>
+                    <a href="#" class="text-light me-2 text-decoration-none"><i class="bi bi-twitter"></i> Twitter</a><br>
+                    <a href="#" class="text-light text-decoration-none"><i class="bi bi-instagram"></i> Instagram</a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-light">
+        <div class="text-center">
+            <p class="mb-0">&copy; @DateTime.Now.Year E-Commerce. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>

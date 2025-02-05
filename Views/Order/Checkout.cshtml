@@ -1,0 +1,98 @@
+﻿@model List<SimpleEcommerce.Models.CartItemViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Checkout";
+}
+
+<h2 class="my-4">Checkout</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">
+        Your cart is empty. <a href="@Url.Action("Shop", "Product")" class="alert-link">Go to Shop</a>
+    </div>
+}
+else
+{
+    <div class="row">
+        <!-- Order Summary Section -->
+        <div class="col-md-6">
+            <div class="card shadow-lg p-3">
+                <h4 class="card-title mb-3">Order Summary</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="d-flex align-items-center">
+                                        <img src="~/images/@item.ImageUrl" width="50" height="50" class="me-2 rounded" alt="@item.Name" />
+                                        @item.Name
+                                    </td>
+                                    <td class="text-center">$@item.Price</td>
+                                    <td class="text-center">@item.Quantity</td>
+                                    <td class="text-center">$@(item.Price * item.Quantity)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <h4 class="d-flex justify-content-between">
+                    <span><strong>Total Amount:</strong></span>
+                    <span class="text-success">$@ViewBag.TotalAmount</span>
+                </h4>
+                <h4 class="d-flex justify-content-between">
+                    <a href="@Url.Action("Shop", "Product")" class="btn btn-outline-secondary btn-lg">
+                        <i class="fas fa-store"></i> Back
+                    </a>
+                </h4>
+            </div>
+        </div>
+
+        <!-- User Information Section -->
+        <div class="col-md-6">
+            <div class="card shadow-lg p-3">
+                <h4 class="mb-3">Billing & Shipping Details</h4>
+                <form action="@Url.Action("PlaceOrder", "Order")" method="post">
+                    <div class="mb-3">
+                        <label for="CustomerName" class="form-label">Full Name</label>
+                        <input type="text" name="CustomerName" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="PhoneNumber" class="form-label">Phone Number</label>
+                        <input type="text" name="PhoneNumber" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="City" class="form-label">City</label>
+                        <input type="text" name="City" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Address" class="form-label">Full Address</label>
+                        <textarea name="Address" class="form-control" rows="2" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ZipCode" class="form-label">Zip Code</label>
+                        <input type="text" name="ZipCode" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="PaymentMethod" class="form-label">Payment Method</label>
+                        <select name="PaymentMethod" class="form-control">
+                            <option value="COD" selected>Cash on Delivery (COD)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}

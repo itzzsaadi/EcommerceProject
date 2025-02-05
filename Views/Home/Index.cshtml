@@ -1,0 +1,95 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Welcome to Our E-Commerce Store";
+}
+<!-- Hero Section with Background Image -->
+<!-- Hero Section with Background Image -->
+<div class="container-fluid p-5 text-center text-white"
+     style="background: url('/images/banner.png') no-repeat center center/cover; position: relative;">
+
+    <!-- Dark Overlay -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5);"></div>
+
+    <!-- Hero Content -->
+    <div class="position-relative" style="z-index: 1;">
+        <h1>Welcome to E-Commerce Store</h1>
+        <p>Find the best deals on our latest products!</p>
+        <a href="@Url.Action("Shop", "Product")" class="btn btn-primary btn-lg">Shop Now</a>
+    </div>
+</div>
+
+
+
+<!-- Featured Products -->
+<div class="container my-5">
+    <h2 class="text-center mb-4">Featured Products</h2>
+    <div class="row">
+        @foreach (var product in ViewBag.FeaturedProducts)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="~/images/@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">$@product.Price</p>
+                        <a href="@Url.Action("Details", "Product", new { id = product.Id })" class="btn btn-success">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<!-- Call to Action -->
+<div class="container text-center my-5">
+    <h2>Get the Best Deals Today!</h2>
+    <p>Limited-time offers on our latest collections.</p>
+</div>
+
+
+<!-- Features Section -->
+<div class="container my-5">
+    <div class="row text-center">
+        <!-- Feature 1: Free Shipping -->
+        <div class="col-md-4">
+            <img src="~/images/shipping-icon.png" alt="Free Shipping" style="width: 60px; height: auto;" />
+            <h4 class="mt-3">Free Shipping</h4>
+            <p>Receive your product within 2-3 working days. Free cash on delivery all over Pakistan.</p>
+        </div>
+
+        <!-- Feature 2: Return or Refunded -->
+        <div class="col-md-4">
+            <img src="~/images/delivery-icon.png" alt="Return or Refund" style="width: 60px; height: auto;" />
+            <h4 class="mt-3">Return or Refunded</h4>
+            <p>You can return your product within 7 days of receiving it. To request a refund.</p>
+        </div>
+
+        <!-- Feature 3: Customer Support -->
+        <div class="col-md-4">
+            <img src="~/images/customer-service-icon.png" alt="Customer Support" style="width: 60px; height: auto;" />
+            <h4 class="mt-3">Customer Support</h4>
+            <p>24/7 customer support that is respectful and helpful. "Your satisfaction is our top priority."</p>
+        </div>
+    </div>
+</div>
+
+<!-- Floating WhatsApp Button -->
+<div class="whatsapp_button" style="position: fixed; bottom: 20px; right: 20px; z-index: 1;">
+    <a href="https://wa.me/+923334889613"
+       target="_blank"
+       title="Chat with us on WhatsApp"
+       style="
+           color: white;
+           width: 60px;
+           height: 60px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           border-radius: 50%;
+           text-decoration: none;
+       ">
+        <img src="~/images/whatsapp-icon.png" alt="WhatsApp" style="width: 30px; height: auto;">
+    </a>
+</div>

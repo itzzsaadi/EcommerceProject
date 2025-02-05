@@ -17,7 +17,7 @@ namespace SimpleEcommerce.Controllers
             return View();
         }
 
-        // POST: Login User with Remember Me functionality
+        // POST: Login User 
         [HttpPost]
         public ActionResult Login(string email, string password, bool rememberMe = false)
         {
